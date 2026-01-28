@@ -10,13 +10,22 @@ on:
 
 concurrency: preview-${{ github.ref }}
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   deploy-preview:
+    if: github.event.pull_request.head.repo.fork == false  # ← ADD THIS LINE
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
+      - name: Build site
+        if: github.event.action != 'closed'
+        run: make docker
+
       - name: Deploy PR Preview
         uses: rossjrw/pr-preview-action@v1.8.1
         with:
-          source-dir: .
+          source-dir: ./_deploy/
