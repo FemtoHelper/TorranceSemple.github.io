@@ -22,16 +22,15 @@ jobs:
               repo: context.repo.repo,
               body: `👋 Thanks for your contribution from a fork!
 
-              **Note:** The "Deploy PR previews" check below will fail - this is expected and normal for fork PRs due to security restrictions.
+              **Your branch preview will automatically deploy to:**
+              https://${forkOwner}.github.io/${repoName}/branch-preview/${branch}/
               
-              **To preview your changes:**
+              **One-time setup on your fork:**
+              1. Enable Actions (if not already enabled)
+              2. Go to Pages settings: https://github.com/${forkOwner}/${repoName}/settings/pages
+              3. Under "Source", select **Deploy from a branch**
+              4. Select **gh-pages** branch and **/ (root)**, then click **Save**
+              5. Wait 1-2 minutes for deployment
               
-              1. Go to your fork's Pages settings: https://github.com/${forkOwner}/${repoName}/settings/pages
-              2. Under "Source", select **Deploy from a branch**
-              3. Select **main** branch and **/ (root)**, then click **Save**
-              4. Wait 1-2 minutes for deployment to complete
-              5. Check the Actions tab for the "pages-build-deployment" workflow
-              6. Once complete, your preview will be at: https://${forkOwner}.github.io/${repoName}/
-              
-              The failing check won't prevent your PR from being merged!`
-              });
+              **Note:** The "Deploy PR previews" check will be skipped for fork PRs.`
+            });
