@@ -22,11 +22,16 @@ jobs:
               repo: context.repo.repo,
               body: `👋 Thanks for your contribution from a fork!
 
-              To preview your changes:
-              1. Enable GitHub Pages on your fork at: https://github.com/${forkOwner}/${repoName}/settings/pages
-              2. Set Source to "Deploy from a branch"  
-              3. Select \`gh-pages\` branch
-              4. Your preview will be at: https://${forkOwner}.github.io/${repoName}/
+              **Note:** The "Deploy PR previews" check below will fail - this is expected and normal for fork PRs due to security restrictions.
               
-              Make sure Actions and workflow permissions are enabled on your fork!`
+              **To preview your changes:**
+              
+              1. Go to your fork's Pages settings: https://github.com/${forkOwner}/${repoName}/settings/pages
+              2. Under "Source", select **Deploy from a branch**
+              3. Select **main** branch and **/ (root)**, then click **Save**
+              4. Wait 1-2 minutes for deployment to complete
+              5. Check the Actions tab for the "pages-build-deployment" workflow
+              6. Once complete, your preview will be at: https://${forkOwner}.github.io/${repoName}/
+              
+              The failing check won't prevent your PR from being merged!`
               });
